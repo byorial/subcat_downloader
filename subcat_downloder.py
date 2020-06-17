@@ -18,6 +18,7 @@ SEARCH_URL  = "index.php?search={keyword}"
 
 LIB_PATH  = "/mnt/gdrive/labels/SOD/STARS"
 TMPDIR  = "/opt/work/subs/download"
+MV2LIB = True
 SUBS = [".srt", ".smi"]
 SUBFIX    = ".ko.srt" 
 MAX_RETRY = 3
@@ -124,9 +125,11 @@ def down_sub(key, url):
     f = open(tmp_f, mode='wb')
     f.write(r.text.encode('utf-8'))
     f.close()
+    
+    if MV2LIB is True:
+        print "move     sub to: %s" % dst_f
+        shutil.move(tmp_f, dst_f)
 
-    print "move     sub to: %s" % dst_f
-    shutil.move(tmp_f, dst_f)
     return True
 
 def get_suburl(key):
