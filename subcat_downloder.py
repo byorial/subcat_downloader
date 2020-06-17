@@ -6,12 +6,17 @@ import shutil
 import re
 import requests
 import urllib
-from bs4 import BeautifulSoup
+
+try:
+    from bs4 import BeautifulSoup
+except ImportError as e:
+    os.system('pip install bs4')
+    from bs4 import BeautifulSoup
 
 BASEURL     = "https://www.subtitlecat.com/"
 SEARCH_URL  = "index.php?search={keyword}"
 
-LIB_PATH  = "/mnt/gdrive/labels/IDEAPOCKET/IPX"
+LIB_PATH  = "/mnt/gdrive/labels/SOD/STARS"
 TMPDIR  = "/opt/work/subs/download"
 SUBS = [".srt", ".smi"]
 SUBFIX    = ".ko.srt" 
@@ -101,6 +106,8 @@ def prepare_tlist():
             print "add to target(%s: %s, %s, %s)" % (keyword, path, fname, ext)
             TLIST[keyword] = [path, fname, ext]
 
+    return len(TLIST)
+
 def down_sub(key, url):
     path, name, ext = TLIST[key]
 
@@ -168,7 +175,8 @@ def get_suburl(key):
                 return False
 
             soup = BeautifulSoup(r.text, "html.parser")
-            tdsub = soup.find('td', text=lang)
+            # TODO:멀티언어처리
+            tdsub = soup.find('td', text='Korean')
             
             if tdsub.parent.find('button') is not None:
                 print 'failed to get subfile url'
@@ -185,9 +193,13 @@ print "load file list..."
 load_flist(LIB_PATH)
 
 print "prepare target file list..."
-prepare_tlist()
+total = prepare_tlist()
+curr  = 0
 
 for key, item in TLIST.items():
+    curr = curr + 1
+
+    print '[INFO] curr target(%s), current/total(%d/%d)' % (key, curr, total)
     suburl = get_suburl(key)
 
     if suburl is None:
