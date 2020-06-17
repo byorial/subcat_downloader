@@ -1,5 +1,9 @@
 # subcat_downloader
-subtitilecat 자막 다운로더
+subtitilecat (AV)자막 다운로더
+
+# 기본기능
+SJVA에 의해 처리된 파일 - 품번 [원본파일명] 형태의 영상파일의 자막을 검색하여 subtitlecat에서 자동 다운로드 
+다운로드는 일단 한국어 자막파일만 대상으로 함
 
 # 사용자 설정값
 ```
