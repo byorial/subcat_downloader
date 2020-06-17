@@ -83,7 +83,7 @@ def parse_fname(fname):
 def exist_sub(keyword):
     for sub in SLIST:
         fname = sub[sub.rfind('/')+1:]
-        if fname.find(" [") > 0: fname = fname[:fname.find(' [')+1]
+        if fname.find(" [") > 0: fname = fname[:fname.find(' [')]
         regex = re.compile(fname, re.I)
         if regex.search(keyword) is not None:
             return True
