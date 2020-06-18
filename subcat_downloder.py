@@ -131,7 +131,7 @@ def load_flist(path):
             #log('SPATH: %s' % fpath)
             SLIST.append(fpath)
             continue
-        else:
+        elif os.path.isfile(fpath):
             #log('FPATH: %s' % fpath)
             FLIST.append(fpath)
 
