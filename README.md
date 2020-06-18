@@ -16,4 +16,10 @@ MAX_RETRY = 3                             # 자막파일 다운로드 시도 횟
 # 다운로드 대상 자막 언어: 원본이 한국어인 경우 -> 영어인경우 순서로 찾음
 LANGS = [['Korean','translated from Korean'], \
         ['English','translated from English']]
+JOBFPATH = '/opt/work/subs/.joblist.json' # 작업내역 기록 파일
+
+# for Plex
+PLEX_PATH_RULE = ['/mnt/gdrive', '/mnt/gdrive']	 # Plex 경로변환
+PlexUrl  ='http://127.0.0.1:32400'		 # Plex URL
+PlexToken='--------------------'		 # Plex token(스크립트로 실행시 사용'
 ```
