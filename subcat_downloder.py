@@ -41,7 +41,7 @@ PLEX_PATH_RULE = ['/mnt/gdrive', '/mnt/gdrive']
 #PLEX_PATH_RULE = ['/mnt/gdrive', 'P:']
 
 PlexUrl  ='http://127.0.0.1:32400'
-PlexToken='Nnz2M_G3vwe-xJe4zywf'
+PlexToken='______________'
 Sections = dict()
 MediaSoup= dict()
 
