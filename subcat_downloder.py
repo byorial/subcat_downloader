@@ -93,12 +93,12 @@ def save_job():
                 dic = json.load(f)
                 dic.update(JOBLIST)
                 JOBLIST = dic
-                f.write(json.dump(dic, indent=2))
+                f.write(json.dumps(dic, indent=2))
             except ValueError:
-                f.write(json.dump(JOBLIST, indent=2))
+                f.write(json.dumps(JOBLIST, indent=2))
     else:
         with open(JOBFPATH, 'w+') as f:
-            f.write(json.dump(JOBLIST, indent=2))
+            f.write(json.dumps(JOBLIST, indent=2))
 
     #log('----------------------------")
     #print JOBLIST
