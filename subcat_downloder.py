@@ -41,7 +41,7 @@ PLEX_PATH_RULE = ['/mnt/gdrive', '/mnt/gdrive']
 #PLEX_PATH_RULE = ['/mnt/gdrive', 'P:']
 
 PlexUrl  ='http://127.0.0.1:32400'
-PlexToken='________________'
+PlexToken='____________________'
 Sections = dict()
 MediaSoup= dict()
 
@@ -93,12 +93,12 @@ def save_job():
                 dic = json.load(f)
                 dic.update(JOBLIST)
                 JOBLIST = dic
-                json.dump(dic, f)
+                f.write(json.dump(dic, indent=2))
             except ValueError:
-                json.dump(JOBLIST, f)
+                f.write(json.dump(JOBLIST, indent=2))
     else:
         with open(JOBFPATH, 'w+') as f:
-            json.dump(JOBLIST, f)
+            f.write(json.dump(JOBLIST, indent=2))
 
     #log('----------------------------")
     #print JOBLIST
@@ -384,7 +384,7 @@ def update_metadata():
             print 'failed to get section_id(path:%s)' % fpath
             continue
 
-        metakey = get_metakey(section_id, fpath)
+        metakey = get_metakey(section_id, plex_fpath)
         if metakey is None:
             print 'failed to get metadata(path:%s)' % fpath
             continue
